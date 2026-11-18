@@ -26,13 +26,19 @@ public class Patient
     public Texture2D Photo;
     public List<Medicine> Medicines = new List<Medicine>();
 
-    public void AddMedicine()
+    public void AddMedicine(Medicine medicine)
     {
-        
+        Medicines.Add(medicine);
     }
 
-    public Patient(string Name){
-        this.Name = Name;
-        this.Photo = Photo;
+    public Patient(string name)
+    {
+        Name = name;
+    }
+
+    public Patient(string name, List<Medicine> medicines, Texture2D photo){
+        Name = name;
+        Photo = photo;
+        Medicines = medicines;
     }
 }
