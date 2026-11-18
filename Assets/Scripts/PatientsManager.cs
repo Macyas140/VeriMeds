@@ -13,19 +13,32 @@ public class PatientsManager : MonoBehaviour
 
    // public List<Patient> PacientList = new List<Patient>();
     private List<GameObject> Buttons = new List<GameObject>();
+    public GameObject PatientDetails;
 
+
+    void OnEnable()
+    {
+        screenManager.onPatientsChanged += RefreshList;
+        SearchBar.onValueChanged.AddListener(SearchPatients);
+        RefreshList();
+        
+    }
 
     void Start()
     {
-        
+        RefreshList();
        
     }
 
-   
-    void Update()
+    void OnDisable()
     {
-        GenerateButtons(screenManager.Patients);
-        SearchBar.onValueChanged.AddListener(SearchPatients);
+        screenManager.onPatientsChanged -= RefreshList;
+        SearchBar.onValueChanged.RemoveListener(SearchPatients);
+    }
+
+    void RefreshList()
+    {
+        SearchPatients(SearchBar.text);
     }
 
     void GenerateButtons(List<Patient> showPatients){
@@ -57,6 +70,7 @@ public class PatientsManager : MonoBehaviour
     }
 
     void PacientClick(Patient pacient){
-        Debug.Log("Opening Pacient: " + pacient.Name);
+        screenManager.SelectPatient(pacient, PatientDetails);
+        //Debug.Log("Opening Pacient: " + pacient.Name);
     }
 }
