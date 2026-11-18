@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -5,6 +6,8 @@ using UnityEngine;
 public class ScreenManager : MonoBehaviour
 {
     [SerializeField] private GameObject StartScreen;
+    public List<Patient> Patients = new List<Patient>();
+    
     //[SerializeField] private GameObject PatientsAdmin;
 
     private GameObject _current_Screen;
@@ -12,6 +15,11 @@ public class ScreenManager : MonoBehaviour
     void Start()
     {
         _current_Screen = StartScreen;
+        Patients.Add(new Patient("Bruno Palacios"));
+        Patients.Add(new Patient("Gael Rodriguez"));
+        Patients.Add(new Patient("Diego Lopez"));
+        Patients.Add(new Patient("Diego Arias"));
+
     }
 
     // Update is called once per frame
