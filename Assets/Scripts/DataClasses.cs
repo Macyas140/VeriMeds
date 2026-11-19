@@ -6,9 +6,9 @@ using System.Collections.Generic;
 public class Medicine
 {
     public string Name;
+    public string Frequency; 
     public string Details;
     public int RemainingDoses;
-
     public int StartingDoses;
     public Texture2D Image;
 
