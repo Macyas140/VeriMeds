@@ -36,6 +36,11 @@ public class Patient
         Name = name;
     }
 
+    public Patient()
+    {
+        
+    }
+
     public Patient(string name, List<Medicine> medicines, Texture2D photo){
         Name = name;
         Photo = photo;
