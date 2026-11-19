@@ -5,6 +5,7 @@ using TMPro;
 public class AddMedicine : MonoBehaviour
 {
     [SerializeField] private ScreenManager screenManager;
+    [SerializeField] private GameObject AdminMedicinesScreen;
     [SerializeField] private TMP_InputField MedicineName;
     [SerializeField] private TMP_InputField DescriptionText;
     [SerializeField] private TMP_InputField Units;
@@ -43,15 +44,18 @@ public class AddMedicine : MonoBehaviour
         
         
 
-        if(int.TryParse(Dose.text, out int DoseAmount) && int.TryParse(TimeInterval.text, out int HourPeriod) && int.TryParse(Units.text, out int MaxUnits))
+        if(int.TryParse(Dose.text, out int DoseAmountForm) && int.TryParse(TimeInterval.text, out int HourPeriod) && int.TryParse(Units.text, out int MaxUnits))
         {
              var newMedicine = new Medicine
         {
             Name=MedicineName.text,
             Details = DescriptionText.text,
-            StartingDoses = MaxUnits/DoseAmount,
-            RemainingDoses = MaxUnits/DoseAmount,
+            StartingDoses = MaxUnits/DoseAmountForm,
+            RemainingDoses = MaxUnits/DoseAmountForm,
+            TotalUnits = MaxUnits,
+            DoseAmount = DoseAmountForm,
             HourInterval = HourPeriod,
+            Frequency = "Every " + HourPeriod + " Hours",
             Image = _selectedPhoto
             
         };
@@ -62,12 +66,16 @@ public class AddMedicine : MonoBehaviour
         DescriptionText.text = "";
         Dose.text = "";
         TimeInterval.text = "";
+        Units.text = "";
         _selectedPhoto = null;
         PhotoImage.texture = null;
         } else
         {
             Debug.Log("Invalid Values");
+            return;
         }
+
+        screenManager.SwitchScreen(AdminMedicinesScreen);
         
 
        

@@ -5,6 +5,7 @@ using TMPro;
 public class AddPatient : MonoBehaviour
 {
     [SerializeField] private ScreenManager screenManager;
+    [SerializeField] private GameObject UsersAdminScreen;
     [SerializeField] private TMP_InputField nameInput;
     [SerializeField] private TMP_InputField lastNameInput;
     [SerializeField] private Button PhotoButton;
@@ -49,6 +50,7 @@ public class AddPatient : MonoBehaviour
         lastNameInput.text = "";
         _selectedPhoto = null;
         PhotoImage.texture = null;
+        screenManager.SwitchScreen(UsersAdminScreen);
     }
     // Update is called once per frame
     void Update()
