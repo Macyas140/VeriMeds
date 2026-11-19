@@ -10,6 +10,7 @@ public class Medicine
     public int RemainingDoses;
 
     public int StartingDoses;
+    public int HourInterval;
     public Texture2D Image;
 
     public void RestoreDoses()
