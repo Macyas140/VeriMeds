@@ -10,6 +10,7 @@ public class PatientsDetailManager : MonoBehaviour
     public Transform medicinesContainer;
     public GameObject MedicineCardPrefab;
     public GameObject MedicineDetailsScreen;
+    public RawImage PhotoImage;
 
     private List<GameObject> cards = new List<GameObject>();
     
@@ -32,10 +33,12 @@ public class PatientsDetailManager : MonoBehaviour
         }
         cards.Clear();
         NameText.text = p.Name;
+        PhotoImage.texture = screenManager.GetPatientPhoto(p);
+        PhotoImage.color = Color.white;
         foreach(Medicine m in p.Medicines){
             GameObject card = Instantiate(MedicineCardPrefab, medicinesContainer);
             card.GetComponent<PatientsDetail>().Setup(m, OnMedicineClicked);
-            cards.Add(card); // Las guardamos para poder borrarlas después
+            cards.Add(card);
         }
     }
 
