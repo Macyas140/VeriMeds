@@ -22,7 +22,7 @@ public class MedicineDetailManager : MonoBehaviour
             return;
         }
 
-        TitleText.text = "Details of " + m.Name;
+        TitleText.text = m.Name;
         FrequencyText.text = m.Frequency;
         DosesText.text = m.RemainingDoses + " Remaining Doses";
         DescriptionText.text = "Description: \n" + m.Details;

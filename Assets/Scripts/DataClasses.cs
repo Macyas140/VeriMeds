@@ -11,6 +11,8 @@ public class Medicine
     public int RemainingDoses;
     public int StartingDoses;
     public int HourInterval;
+    public int TotalUnits;
+    public int DoseAmount;
     public Texture2D Image;
 
     public void RestoreDoses()
