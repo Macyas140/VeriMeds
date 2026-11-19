@@ -44,7 +44,7 @@ public class AddPatient : MonoBehaviour
             Photo = _selectedPhoto
         };
 
-        screenManager.Patients.Add(newPatient);
+        screenManager.AddPatient(newPatient);
         nameInput.text = "";
         lastNameInput.text = "";
         _selectedPhoto = null;

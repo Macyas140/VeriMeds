@@ -51,7 +51,7 @@ public class PatientsManager : MonoBehaviour
             GameObject newButton = Instantiate(PatientPrefab, contentScrollView);
             TMP_Text textButton = newButton.GetComponentInChildren<TMP_Text>();
             if(textButton != null){
-                textButton.text = p.Name;
+                textButton.text = p.Name + " " + p.LastName;
             }
             Patient actualPacient = p;
             Button btn = newButton.GetComponent<Button>();

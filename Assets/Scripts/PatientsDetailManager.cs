@@ -9,6 +9,7 @@ public class PatientsDetailManager : MonoBehaviour
     public TMP_Text NameText;
     public Transform medicinesContainer;
     public GameObject MedicineCardPrefab;
+    public GameObject MedicineDetailsScreen;
 
     private List<GameObject> cards = new List<GameObject>();
     
@@ -39,6 +40,7 @@ public class PatientsDetailManager : MonoBehaviour
     }
 
     void OnMedicineClicked(Medicine medicine){
+        screenManager.SelectMedicine(medicine, MedicineDetailsScreen);
         Debug.Log("Opening Medicine: " + medicine.Name);
     }
 }

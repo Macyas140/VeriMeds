@@ -10,6 +10,7 @@ public class ScreenManager : MonoBehaviour
     public List<Patient> Patients = new List<Patient>();
     public event Action onPatientsChanged;
     public Patient CurrentPatient {get; private set;}
+    public Medicine CurrentMedicine {get; private set;}
     
     //[SerializeField] private GameObject PatientsAdmin;
 
@@ -24,8 +25,8 @@ public class ScreenManager : MonoBehaviour
         Patients.Add(new Patient("Diego Arias"));
         onPatientsChanged?.Invoke();
         Patient macy = new Patient("Macy Ass");
-        macy.AddMedicine(new Medicine { Name = "Paracetamol", RemainingDoses = 3, StartingDoses = 12 });
-        macy.AddMedicine(new Medicine { Name = "Omeprazol", RemainingDoses = 12, StartingDoses = 14 });
+        macy.AddMedicine(new Medicine { Name = "Paracetamol", RemainingDoses = 3, StartingDoses = 12, Frequency = "Every 12 Hours", Details = "Tomar junto con la cena Type Xie" });
+        macy.AddMedicine(new Medicine { Name = "Omeprazol", RemainingDoses = 12, StartingDoses = 14, Frequency = "Every 16 Hours", Details = "Tomar junto con la comida Type Xie" });
         AddPatient(macy);
 
     }
@@ -59,5 +60,10 @@ public class ScreenManager : MonoBehaviour
         CurrentPatient = patient;
         SwitchScreen(MEDICINE_ADMIN);
 
+    }
+
+    public void SelectMedicine(Medicine medicine, GameObject Target){
+        CurrentMedicine = medicine;
+        SwitchScreen(Target);
     }
 }
