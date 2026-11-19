@@ -11,6 +11,7 @@ public class ScreenManager : MonoBehaviour
     public event Action onPatientsChanged;
     public Patient CurrentPatient {get; private set;}
     public Medicine CurrentMedicine {get; private set;}
+    public Texture2D DefaultPatientPhoto;
     
     //[SerializeField] private GameObject PatientsAdmin;
 
@@ -65,5 +66,9 @@ public class ScreenManager : MonoBehaviour
     public void SelectMedicine(Medicine medicine, GameObject Target){
         CurrentMedicine = medicine;
         SwitchScreen(Target);
+    }
+
+    public Texture GetPatientPhoto(Patient p){
+        return (p != null && p.Photo != null) ? p.Photo : DefaultPatientPhoto;
     }
 }

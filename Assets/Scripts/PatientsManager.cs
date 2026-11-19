@@ -53,6 +53,11 @@ public class PatientsManager : MonoBehaviour
             if(textButton != null){
                 textButton.text = p.Name + " " + p.LastName;
             }
+            RawImage photo = newButton.GetComponentInChildren<RawImage>();
+            if(photo != null){
+                photo.texture = screenManager.GetPatientPhoto(p);
+                photo.color = Color.white;
+            }
             Patient actualPacient = p;
             Button btn = newButton.GetComponent<Button>();
             btn.onClick.AddListener(() => PacientClick(actualPacient));
