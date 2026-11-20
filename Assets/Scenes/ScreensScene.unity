@@ -765,6 +765,10 @@ PrefabInstance:
       propertyPath: screenManager
       value: 
       objectReference: {fileID: 1502925760}
+    - target: {fileID: 6422414955793852647, guid: f029886d64e203d43ba4d4fbb9573d74, type: 3}
+      propertyPath: AdminMedicinesScreen
+      value: 
+      objectReference: {fileID: 571034453}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1412,6 +1416,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549701255}
   m_CullTransparentMesh: 1
+--- !u!1 &549960554 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3064671249076689585, guid: a257fc594deca6a4f8b6f27c515e8859, type: 3}
+  m_PrefabInstance: {fileID: 2036785782}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &571034453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1555,7 +1564,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 618739766}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1502925760}
+        m_TargetAssemblyTypeName: ScreenManager, Assembly-CSharp
+        m_MethodName: SwitchScreen
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 549960554}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &618739766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2739,6 +2760,10 @@ PrefabInstance:
       propertyPath: screenManager
       value: 
       objectReference: {fileID: 1502925760}
+    - target: {fileID: 2697753566114122157, guid: bda70d0957b6b4846aabe517c42782f6, type: 3}
+      propertyPath: UsersAdminScreen
+      value: 
+      objectReference: {fileID: 800990338}
     - target: {fileID: 3736803160733075673, guid: bda70d0957b6b4846aabe517c42782f6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
