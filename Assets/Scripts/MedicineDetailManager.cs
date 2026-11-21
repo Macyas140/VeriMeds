@@ -34,6 +34,11 @@ public class MedicineDetailManager : MonoBehaviour
         screenManager.SwitchScreen(PatientDetailsScreen);
     }
 
+    public void RechargeMedicine()
+    {
+        screenManager.CurrentMedicine.RemainingDoses = screenManager.CurrentMedicine.StartingDoses;
+    }
+
     public void OpenEdit(){
         Debug.Log("Lol");
     }
