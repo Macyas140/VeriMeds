@@ -7,6 +7,7 @@ using UnityEngine;
 public class ScreenManager : MonoBehaviour
 {
     [SerializeField] private GameObject StartScreen;
+    [SerializeField] private PushNotifications push;
     public List<Patient> Patients = new List<Patient>();
     public event Action onPatientsChanged;
     public Patient CurrentPatient {get; private set;}
@@ -16,6 +17,7 @@ public class ScreenManager : MonoBehaviour
     //[SerializeField] private GameObject PatientsAdmin;
 
     private GameObject _current_Screen;
+    public bool _isAdmin;   
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,7 +28,7 @@ public class ScreenManager : MonoBehaviour
         Patients.Add(new Patient("Diego Arias"));
         onPatientsChanged?.Invoke();
         Patient macy = new Patient("Macy Ass");
-        macy.AddMedicine(new Medicine { Name = "Paracetamol", RemainingDoses = 3, StartingDoses = 12, Frequency = "Every 12 Hours", Details = "Tomar junto con la cena Type Xie" });
+        macy.AddMedicine(new Medicine { Name = "Paracetamol", RemainingDoses = 2, StartingDoses = 12, Frequency = "Every 12 Hours", Details = "Tomar junto con la cena Type Xie" });
         macy.AddMedicine(new Medicine { Name = "Omeprazol", RemainingDoses = 12, StartingDoses = 14, Frequency = "Every 16 Hours", Details = "Tomar junto con la comida Type Xie" });
         AddPatient(macy);
 
@@ -42,6 +44,8 @@ public class ScreenManager : MonoBehaviour
         _current_Screen.SetActive(false);
         Target.SetActive(true);
         _current_Screen = Target;
+        Debug.Log(_isAdmin);
+        
     }
 
     public void AddPatient(Patient patient)
@@ -70,5 +74,14 @@ public class ScreenManager : MonoBehaviour
 
     public Texture GetPatientPhoto(Patient p){
         return (p != null && p.Photo != null) ? p.Photo : DefaultPatientPhoto;
+    }
+
+    public void SetCaretaker(bool val)
+    {
+        _isAdmin = val;
+        if (val)
+        {
+            push.LowDoseChecker();
+        }
     }
 }
