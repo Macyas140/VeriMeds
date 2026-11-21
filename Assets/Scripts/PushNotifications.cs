@@ -34,8 +34,8 @@ public class PushNotifications : MonoBehaviour
                 foreach (Medicine med in pat.Medicines)
                 {
                     if (med.RemainingDoses <= Threshold)
-                    Debug.Log("NOTI -> " + pat.Name + " | " + med.Name + " | " + med.RemainingDoses);
                     {
+                        Debug.Log("NOTI -> " + pat.Name + " | " + med.Name + " | " + med.RemainingDoses);
                         var Noti = new AndroidNotification
                         {
                             Title = "LOW DOSES",
