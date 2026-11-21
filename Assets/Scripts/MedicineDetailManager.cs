@@ -37,6 +37,7 @@ public class MedicineDetailManager : MonoBehaviour
     public void RechargeMedicine()
     {
         screenManager.CurrentMedicine.RemainingDoses = screenManager.CurrentMedicine.StartingDoses;
+        DosesText.text = screenManager.CurrentMedicine.RemainingDoses + " Remaining Doses";
     }
 
     public void OpenEdit(){
