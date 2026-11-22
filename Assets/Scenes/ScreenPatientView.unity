@@ -4530,6 +4530,8 @@ MonoBehaviour:
   FrequencyText: {fileID: 1968488394}
   DosesText: {fileID: 1348504148}
   DescriptionText: {fileID: 1687298564}
+  DefaultMedicineImage: {fileID: 2800000, guid: 7a6ba35d0a2aff44ca03b8e281ca6675, type: 3}
+  TakeButton: {fileID: 576781866}
 --- !u!1 &982064785
 GameObject:
   m_ObjectHideFlags: 0

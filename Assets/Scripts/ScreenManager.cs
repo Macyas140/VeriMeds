@@ -28,8 +28,8 @@ public class ScreenManager : MonoBehaviour
         Patients.Add(new Patient("Diego Arias"));
         onPatientsChanged?.Invoke();
         Patient macy = new Patient("Macy Ass");
-        macy.AddMedicine(new Medicine { Name = "Paracetamol", RemainingDoses = 2, StartingDoses = 12, Frequency = "Every 12 Hours", Details = "Tomar junto con la cena Type Xie" });
-        macy.AddMedicine(new Medicine { Name = "Omeprazol", RemainingDoses = 12, StartingDoses = 14, Frequency = "Every 16 Hours", Details = "Tomar junto con la comida Type Xie" });
+        macy.AddMedicine(new Medicine { Name = "Paracetamol", HourInterval = 12, RemainingDoses = 2, StartingDoses = 12, Frequency = "Every 12 Hours", Details = "Tomar junto con la cena Type Xie" });
+        macy.AddMedicine(new Medicine { Name = "Omeprazol", HourInterval = 16, RemainingDoses = 12, StartingDoses = 14, Frequency = "Every 16 Hours", Details = "Tomar junto con la comida Type Xie" });
         AddPatient(macy);
 
     }
