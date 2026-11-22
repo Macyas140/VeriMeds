@@ -1282,7 +1282,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1389,6 +1389,7 @@ MonoBehaviour:
   medicinesContainer: {fileID: 1552220053}
   MedicineCardPrefab: {fileID: 1567713626016314670, guid: c1d251ab302e7404e8931e5255a9c2af, type: 3}
   MedicineDetailsScreen: {fileID: 0}
+  PhotoImage: {fileID: 0}
 --- !u!1 &618948781
 GameObject:
   m_ObjectHideFlags: 0
@@ -1977,7 +1978,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2010,7 +2011,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 5.7575684, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2832,6 +2833,7 @@ MonoBehaviour:
   medicinesContainer: {fileID: 1552220053}
   MedicineCardPrefab: {fileID: 1567713626016314670, guid: c1d251ab302e7404e8931e5255a9c2af, type: 3}
   MedicineDetailsScreen: {fileID: 0}
+  PhotoImage: {fileID: 0}
 --- !u!4 &896056800
 Transform:
   m_ObjectHideFlags: 0
@@ -3162,8 +3164,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.4376, y: -434}
-  m_SizeDelta: {x: 773.51, y: 307.7135}
+  m_AnchoredPosition: {x: 32.33, y: -434}
+  m_SizeDelta: {x: 957.7573, y: 307.7135}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1166066714
 MonoBehaviour:
@@ -4027,7 +4029,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScreenManager
   StartScreen: {fileID: 1811614000}
+  push: {fileID: 0}
   Patients: []
+  DefaultPatientPhoto: {fileID: 0}
+  _isAdmin: 0
 --- !u!1 &1528976809
 GameObject:
   m_ObjectHideFlags: 0
@@ -5174,8 +5179,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.4359, y: -30.7375}
-  m_SizeDelta: {x: 773.5066, y: 199.6771}
+  m_AnchoredPosition: {x: 10.971, y: -30.7375}
+  m_SizeDelta: {x: 915.04, y: 199.6771}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2114419755
 MonoBehaviour:
