@@ -14,10 +14,41 @@ public class Medicine
     public int TotalUnits;
     public int DoseAmount;
     public Texture2D Image;
+    public long LastTakenMedicine;
+    public static int MinutesPerHour = 60;
+    public int ReminderId = -1;
 
     public void RestoreDoses()
     {
         
+    }
+
+
+    public DateTime NextDoseTime{
+        get{
+            if(LastTakenMedicine == 0){
+                return DateTime.MinValue;
+            }
+            return new DateTime(LastTakenMedicine).AddMinutes(HourInterval * MinutesPerHour);
+        }
+    }
+
+    public bool CanTakeItNow => RemainingDoses > 0 && DateTime.Now >= NextDoseTime;
+
+    public TimeSpan TimeUntilNextDose{
+        get{
+            TimeSpan t = NextDoseTime - DateTime.Now;
+            return t > TimeSpan.Zero ? t : TimeSpan.Zero;
+        }
+    }
+
+    public bool TryToTakeDose(){
+        if(!CanTakeItNow){
+            return false;
+        }
+        RemainingDoses--;
+        LastTakenMedicine = DateTime.Now.Ticks;
+        return true;
     }
 }
 
