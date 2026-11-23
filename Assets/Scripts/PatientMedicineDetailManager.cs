@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -10,35 +11,59 @@ public class PatientMedicineDetailManager : MonoBehaviour{
     public TMP_Text FrequencyText;
     public TMP_Text DosesText;
     public TMP_Text DescriptionText;
+    public Texture DefaultMedicineImage;
+    public Button TakeButton;
+    public PushNotifications push;
 
     void OnEnable(){
         ShowMedicine(screenManager.CurrentMedicine);
+        StartCoroutine(RefreshLoop());
     }
     void ShowMedicine (Medicine m){
         if (m == null) return;
 
         TitleText.text = m.Name;
-        DosesText.text = "<b>Dose:</b> 1 pill (500 mg)";
-        if (m.Name.ToLower().Contains("paracetamol"))
-        {
-            FrequencyText.text = "<b>Time:</b> 16:00";
-        }
-        else if (m.Name.ToLower().Contains("omeprazol"))
-        {
-            FrequencyText.text = "<b>Time:</b> 14:00";
-        }
-        else
-        {
-            FrequencyText.text = "<b>Time:</b> " + m.Frequency;
-        }
         DescriptionText.text = "<b>Description:</b> " + m.Details;
-        if (m.Image != null) MedicineImage.texture = m.Image;
+        MedicineImage.texture = m.Image != null ? m.Image : DefaultMedicineImage;
+        MedicineImage.gameObject.SetActive(MedicineImage.texture != null);
+
+        RefreshTimeInfo(m);
     }
+
+    IEnumerator RefreshLoop(){
+        while(true){
+            RefreshTimeInfo(screenManager.CurrentMedicine);
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    void RefreshTimeInfo(Medicine m){
+        if(m == null){
+            return;
+        }
+        DosesText.text = "<b>Dose Left:</b> " + m.RemainingDoses;
+
+        if(m.RemainingDoses <= 0){
+            FrequencyText.text = "<b>No doses left</b>";
+            TakeButton.interactable = false;
+        }else if(m.CanTakeItNow){
+            FrequencyText.text = "<b>It's time to take it</b>";
+            TakeButton.interactable = true;
+        }else{
+            System.TimeSpan t = m.TimeUntilNextDose;
+            FrequencyText.text = "<b>Next dose at " + m.NextDoseTime.ToString("HH:mm") + "</b> (in " + string.Format("{0:D2}:{1:D2}:{2:D2}", (int)t.TotalHours, t.Minutes, t.Seconds) + ")";
+            TakeButton.interactable = false;
+        }
+    }
+
     public void TakeMedicine(){
         Medicine m = screenManager.CurrentMedicine;
-        if (m != null && m.RemainingDoses > 0){
-            m.RemainingDoses--;
-            DosesText.text = "<b>Dose:</b> " + m.RemainingDoses + " remaining";
+        if(m == null){
+            return;
+        }
+        if(m.TryToTakeDose()){
+            push.ScheduleDoseReminder(m);
+            RefreshTimeInfo(m);
         }
     }
     public void GoBack(){
