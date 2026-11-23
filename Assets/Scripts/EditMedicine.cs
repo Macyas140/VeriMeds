@@ -14,6 +14,7 @@ public class EditMedicine : MonoBehaviour
     [SerializeField] private TMP_InputField TimeInterval;
     [SerializeField] private Button PhotoButton;
     [SerializeField] private RawImage PhotoImage;
+    public PushNotifications push; 
 
     private Texture2D _selectedPhoto;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -83,7 +84,7 @@ public class EditMedicine : MonoBehaviour
             Debug.Log("Invalid Modifications");
             return;
         }
-
+        if (m.LastTakenMedicine != 0) push.ScheduleDoseReminder(m);
         screenManager.SwitchScreen(MedicineDetailsScreen);
     }
 

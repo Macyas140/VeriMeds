@@ -24,6 +24,14 @@ public class PushNotifications : MonoBehaviour
         Description = "Low Dose alarm for caretakers"
         };
         AndroidNotificationCenter.RegisterNotificationChannel(channel);
+
+        var doseChannel = new AndroidNotificationChannel(){
+            Id = "dose_time",
+            Name = "Dose Reminders",
+            Importance = Importance.High,
+            Description = "Reminds when its time to take the medicine"
+        };
+        AndroidNotificationCenter.RegisterNotificationChannel(doseChannel);
     }
 
     public void LowDoseChecker()
@@ -51,6 +59,31 @@ public class PushNotifications : MonoBehaviour
         else
         {
             return;
+        }
+    }
+
+    public void ScheduleDoseReminder(Medicine med){
+        CancelDoseReminder(med);
+        if(med.RemainingDoses <= 0){
+            return;
+        }
+        DateTime fireTime = med.NextDoseTime;
+        if(fireTime <= DateTime.Now){
+            return;
+        }
+
+        var noti = new AndroidNotification{
+            Title = "Time to take your Medicine",
+            Text = "Its time to take " + med.Name,
+            FireTime = fireTime
+        };
+        med.ReminderId = AndroidNotificationCenter.SendNotification(noti, "dose_time");
+    }
+
+    public void CancelDoseReminder(Medicine med){
+        if(med.ReminderId != 1){
+            AndroidNotificationCenter.CancelScheduledNotification(med.ReminderId);
+            med.ReminderId = -1;
         }
     }
 

@@ -40,14 +40,13 @@ public class PatientMedicinesManager : MonoBehaviour{
             GameObject card = Instantiate(MedicineCardPrefab, MedicinesContainer);
             card.GetComponent<PatientsDetail>().Setup(m, OnMedicineClicked);
             
-            if (m.Name.ToLower().Contains("paracetamol")){
-                card.transform.Find("MedicineNameText").GetComponent<TMP_Text>().text = "In 4 hours (16:00)";
-            }
-            else if (m.Name.ToLower().Contains("omeprazol")){
-                card.transform.Find("MedicineNameText").GetComponent<TMP_Text>().text = "In 2 hours (14:00)";
-            }
-            else{
-                card.transform.Find("MedicineNameText").GetComponent<TMP_Text>().text = "In 6 hours (18:00)";
+            TMP_Text tiemText = card.transform.Find("MedicineNameText").GetComponent<TMP_Text>();
+            if(m.RemainingDoses <= 0){
+                tiemText.text = "No doses Left";
+            }else if(m.CanTakeItNow){
+                tiemText.text = "Take Now";
+            }else{
+                tiemText.text = "Next at " + m.NextDoseTime.ToString("HH:mm");
             }
 
             card.transform.Find("DosesText").GetComponent<TMP_Text>().text = m.Name.ToUpper();
