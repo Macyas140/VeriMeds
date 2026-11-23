@@ -16,6 +16,7 @@ public class Medicine
     public Texture2D Image;
     public long LastTakenMedicine;
     public static int MinutesPerHour = 60;
+    public int ReminderId = -1;
 
     public void RestoreDoses()
     {

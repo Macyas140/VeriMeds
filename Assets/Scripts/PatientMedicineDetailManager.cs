@@ -13,6 +13,7 @@ public class PatientMedicineDetailManager : MonoBehaviour{
     public TMP_Text DescriptionText;
     public Texture DefaultMedicineImage;
     public Button TakeButton;
+    public PushNotifications push;
 
     void OnEnable(){
         ShowMedicine(screenManager.CurrentMedicine);
@@ -61,6 +62,7 @@ public class PatientMedicineDetailManager : MonoBehaviour{
             return;
         }
         if(m.TryToTakeDose()){
+            push.ScheduleDoseReminder(m);
             RefreshTimeInfo(m);
         }
     }
