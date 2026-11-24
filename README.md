@@ -5,6 +5,7 @@
 - [User Research](User_Research.md): research goal, method, participants, key findings, customer journey and how the research shaped the solution.
 - [User Testing](User_Testing.md): usability tests with three testers, their results and the improvements made.
 - [Design Justification](Design_Justification.md): design decisions and the principles behind them (color perception, cognitive load, feedback, consistency).
+- [AI Usage](AI_USAGE.md): how and where AI tools were used during the project.
 
 ---
 
